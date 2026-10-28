@@ -1,0 +1,16 @@
+rule_id,dimension,description,failed_rows,status
+C1,completeness,Event has no user_id,23,FAIL
+C2,completeness,User has no region,18,FAIL
+C3,completeness,Event has no timestamp or type,0,PASS
+C4,completeness,Calendar day with zero events (missing partition),1,FAIL
+K1,consistency,Duplicate event_id,39,FAIL
+K2,consistency,Duplicate user record,10,FAIL
+K3,consistency,Event references a user that does not exist (orphan),30,FAIL
+K4,consistency,Event type outside the tracking plan,20,FAIL
+K5,consistency,Platform value outside the allowed set,12,FAIL
+K6,consistency,Negative revenue,8,FAIL
+K7,consistency,Revenue recorded on a non-purchase event,14,FAIL
+K8,consistency,Event occurs before the user's signup,35,FAIL
+T1,timeliness,Event timestamp in the future (after load date),12,FAIL
+T2,timeliness,Event ingested more than 24h after it occurred (late-arriving),60,FAIL
+T3,timeliness,Event ingested before it occurred (clock skew),0,PASS
